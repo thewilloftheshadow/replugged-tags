@@ -1,18 +1,18 @@
 {
-	"id": "dev.shadowing.tags",
-	"name": "Tags",
-	"description": "A plugin to save and recall tags",
-	"author": {
-		"name": "Shadow",
-		"discordID": "439223656200273932",
-		"github": "thewilloftheshadow"
-	},
-	"version": "1.0.0",
-	"updater": {
-		"type": "store",
-		"id": "dev.shadowing.tags"
-	},
-	"license": "MIT",
-	"type": "replugged-plugin",
-	"renderer": "src/index.ts"
+  "id": "dev.shadowing.tags",
+  "name": "Tags",
+  "description": "A plugin to save and recall tags",
+  "author": {
+    "name": "Shadow",
+    "discordID": "439223656200273932",
+    "github": "thewilloftheshadow"
+  },
+  "version": "1.0.0",
+  "updater": {
+    "type": "store",
+    "id": "dev.shadowing.tags"
+  },
+  "license": "MIT",
+  "type": "replugged-plugin",
+  "renderer": "src/index.ts"
 }
