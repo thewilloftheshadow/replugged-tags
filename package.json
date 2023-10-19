@@ -1,7 +1,7 @@
 {
 	"name": "replugged-tags",
 	"private": true,
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "A plugin to save and recall tags",
 	"engines": {
 		"node": ">=18.18.0"
