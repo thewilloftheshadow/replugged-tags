@@ -7,12 +7,17 @@
 		"discordID": "439223656200273932",
 		"github": "thewilloftheshadow"
 	},
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"updater": {
 		"type": "store",
 		"id": "dev.shadowing.tags"
 	},
 	"license": "MIT",
 	"type": "replugged-plugin",
-	"renderer": "src/index.ts"
+	"renderer": "src/index.ts",
+	"source": "https://github.com/thewilloftheshadow/replugged-tags",
+	"image": [
+		"https://i.imgur.com/wn3AFxt.png",
+		"https://i.imgur.com/EecyiAX.png"
+	]
 }
