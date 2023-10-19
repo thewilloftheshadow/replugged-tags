@@ -1,0 +1,24 @@
+{
+	"name": "replugged-tags",
+	"private": true,
+	"description": "A plugin to save and recall tags",
+	"engines": {
+		"node": ">=18.18.0"
+	},
+	"scripts": {
+		"build": "replugged build plugin",
+		"watch": "replugged build plugin --watch",
+		"bundle": "replugged bundle plugin",
+		"release": "replugged release",
+		"check": "tsc --noEmit"
+	},
+	"keywords": [],
+	"author": "Shadow",
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "^1.2.2",
+		"@types/node": "^18.18.6",
+		"replugged": "^4.7.4",
+		"typescript": "^5.2.2"
+	}
+}
