@@ -7,8 +7,9 @@ import tagEdit from "./commands/tag-edit"
 import tagGet from "./commands/tag-get"
 import tagList from "./commands/tag-list"
 import tag from "./commands/tag"
+import debug from "./commands/tag-debug"
 
-const commands = [tagCreate, tagDelete, tagEdit, tagGet, tagList, tag]
+const commands = [tagCreate, tagDelete, tagEdit, tagGet, tagList, tag, debug]
 
 export const start = () => {
 	commands.map((cmd) => {

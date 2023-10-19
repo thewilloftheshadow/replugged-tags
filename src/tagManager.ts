@@ -1,6 +1,6 @@
 import { init as initSettings, SettingsManager } from "replugged/settings"
-import { logger } from "."
 import { CommandChoices } from "replugged/types"
+import { logger } from "."
 
 type Settings = {
 	tags: Array<Tag>
@@ -11,28 +11,34 @@ type Tag = {
 	content: string
 }
 
+const defaultSettings = {
+	tags: []
+} satisfies Settings
+
 export default class TagManager {
-	settings: SettingsManager<Settings, never> | null = null
+	settings: SettingsManager<Settings, keyof typeof defaultSettings> | null =
+		null
 	constructor() {
 		this.init()
 	}
 
 	async init() {
-		this.settings = await initSettings<Settings, never>(
-			"dev.shadowing.tags"
-		)
+		this.settings = await initSettings<
+			Settings,
+			keyof typeof defaultSettings
+		>("dev.shadowing.tags", defaultSettings)
 	}
 
 	list() {
 		if (!this.settings) {
-			logger.error("Settings not initialized")
+			throw new Error("Settings not initialized")
 		}
 		return this.settings?.get("tags") ?? []
 	}
 
 	create(data: Settings["tags"][number]) {
 		if (!this.settings) {
-			logger.error("Settings not initialized")
+			throw new Error("Settings not initialized")
 		}
 		const tags = this.list()
 		tags.push(data)
@@ -41,7 +47,7 @@ export default class TagManager {
 
 	get(name: string) {
 		if (!this.settings) {
-			logger.error("Settings not initialized")
+			throw new Error("Settings not initialized")
 		}
 		const tags = this.list()
 		return tags.find((tag) => tag.name === name)
@@ -49,21 +55,25 @@ export default class TagManager {
 
 	delete(name: string) {
 		if (!this.settings) {
-			logger.error("Settings not initialized")
+			throw new Error("Settings not initialized")
 		}
 		const tags = this.list()
 		const newTags = tags.filter((tag) => tag.name !== name)
-		this.settings?.set("tags", newTags)
+		logger.log(newTags)
+		this.settings.set("tags", newTags)
 	}
 
-	edit(name: string, data: Tag) {
+	edit(name: string, content: string) {
 		if (!this.settings) {
-			logger.error("Settings not initialized")
+			throw new Error("Settings not initialized")
 		}
 		const tags = this.list()
 		const newTags = tags.map((tag) => {
 			if (tag.name === name) {
-				return data
+				return {
+					...tag,
+					content
+				}
 			}
 			return tag
 		})
@@ -72,7 +82,7 @@ export default class TagManager {
 
 	optionList(): CommandChoices[] {
 		if (!this.settings) {
-			logger.error("Settings not initialized")
+			throw new Error("Settings not initialized")
 		}
 		const tags = this.list()
 		return tags.map((tag) => ({

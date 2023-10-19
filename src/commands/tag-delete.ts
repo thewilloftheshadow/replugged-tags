@@ -27,6 +27,7 @@ const command: RepluggedCommand<CommandOptions> = {
 				result: "That tag does not exist!"
 			}
 		}
+		tags.delete(tag.name)
 		return {
 			send: false,
 			result: `Tag successfully deleted! Here is the content if this was unintentional:\n\`\`\`${tag.content}\`\`\``

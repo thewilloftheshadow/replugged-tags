@@ -26,6 +26,14 @@ const command: RepluggedCommand<CommandOptions> = {
 		const name = interaction.getValue("name")
 		const content = interaction.getValue("content")
 
+		const tag = tags.get(name)
+		if (tag) {
+			return {
+				send: false,
+				result: "That tag already exists!"
+			}
+		}
+
 		tags.create({
 			name,
 			content
